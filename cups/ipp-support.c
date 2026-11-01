@@ -2204,7 +2204,10 @@ ippEnumValue(const char *attrname,	// I - Attribute name
 	   !strcmp(attrname, "finishings-actual") ||
 	   !strcmp(attrname, "finishings-default") ||
 	   !strcmp(attrname, "finishings-ready") ||
-	   !strcmp(attrname, "finishings-supported"))
+	   !strcmp(attrname, "finishings-supported") ||
+	   !strcmp(attrname, "job-finishings") ||
+	   !strcmp(attrname, "job-finishings-default") ||
+	   !strcmp(attrname, "job-finishings-supported"))
   {
     for (i = 0; i < (sizeof(ipp_finishings_vendor) / sizeof(ipp_finishings_vendor[0])); i ++)
     {
@@ -2287,7 +2290,7 @@ ippErrorString(ipp_status_t error)	// I - Error status
     return ("redirection-other-site");
   else if (error == IPP_STATUS_CUPS_SEE_OTHER)
     return ("cups-see-other");
-  else if (error >= IPP_STATUS_ERROR_BAD_REQUEST && error <= IPP_STATUS_ERROR_ACCOUNT_AUTHORIZATION_FAILED)
+  else if (error >= IPP_STATUS_ERROR_BAD_REQUEST && error <= IPP_STATUS_ERROR_NOT_FETCHABLE)
     return (ipp_status_400s[error - IPP_STATUS_ERROR_BAD_REQUEST]);
   else if (error >= IPP_STATUS_ERROR_INTERNAL && error <= IPP_STATUS_ERROR_TOO_MANY_DOCUMENTS)
     return (ipp_status_500s[error - IPP_STATUS_ERROR_INTERNAL]);
